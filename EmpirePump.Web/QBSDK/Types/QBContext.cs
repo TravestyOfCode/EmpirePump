@@ -1,4 +1,6 @@
-﻿namespace EmpirePump.Web.QBSDK;
+﻿using EmpirePump.Web.QBSDK.Enums;
+
+namespace EmpirePump.Web.QBSDK.Types;
 
 public class QBContext
 {

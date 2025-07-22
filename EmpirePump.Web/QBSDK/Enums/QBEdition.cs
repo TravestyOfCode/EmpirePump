@@ -1,4 +1,4 @@
-﻿namespace EmpirePump.Web.QBSDK;
+﻿namespace EmpirePump.Web.QBSDK.Enums;
 
 [Flags]
 public enum QBEdition

@@ -1,4 +1,5 @@
-﻿using QBXMLRP2Lib;
+﻿using EmpirePump.Web.QBSDK.Types;
+using QBXMLRP2Lib;
 using System.Xml.Linq;
 
 namespace EmpirePump.Web.QBSDK;

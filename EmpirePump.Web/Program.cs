@@ -30,6 +30,16 @@ namespace EmpirePump.Web
 
             builder.Services.AddScoped<QBConnection>();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(p =>
+                {
+                    p.AllowAnyHeader();
+                    p.AllowAnyMethod();
+                    p.AllowAnyOrigin();
+                });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -45,6 +55,8 @@ namespace EmpirePump.Web
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors();
 
             app.UseStaticFiles();
 

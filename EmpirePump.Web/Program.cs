@@ -1,4 +1,5 @@
 using EmpirePump.Web.Data;
+using EmpirePump.Web.QBSDK;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,8 @@ namespace EmpirePump.Web
                 .AddEntityFrameworkStores<AppDbContext>();
 
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped<QBConnection>();
 
             var app = builder.Build();
 

@@ -52,6 +52,15 @@ public class QBConnection(ILogger<QBConnection> logger) : IDisposable
         return ProcessRequest(rq);
     }
 
+    public void DisplayTxn(TxnType txnType, string txnID)
+    {
+        var rq = new XElement("TxnDisplayModRq");
+        rq.Add(new XElement("TxnDisplayModType", txnType));
+        rq.Add(new XElement("TxnID", txnID));
+
+        _ = ProcessRequest(rq);
+    }
+
     private bool Open()
     {
         if (IsCorrectFileOpen())

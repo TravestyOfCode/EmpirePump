@@ -108,7 +108,7 @@ public class SalesOrderAddRq : IQBXElement
     }
 
     /// <summary>
-    /// Sends the ItemQueryRq to QuickBooks to process.
+    /// Sends the SalesOrderAddRq to QuickBooks to process.
     /// </summary>
     /// <param name="connection">The QuickBooks connection to process the request.</param>
     public void ProcessRequest(QBConnection connection)

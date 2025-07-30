@@ -46,6 +46,12 @@ public class QBConnection(ILogger<QBConnection> logger) : IDisposable
         return Error.ServerError("Unknown error processing request.");
     }
 
+    public Result<XDocument> ProcessRequest(IQBXElement request)
+    {
+        var rq = request.ToXElement(QBContext);
+        return ProcessRequest(rq);
+    }
+
     private bool Open()
     {
         if (IsCorrectFileOpen())

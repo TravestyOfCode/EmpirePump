@@ -19,7 +19,9 @@ public class SalesOrderLineAdd : SalesOrderLineAddBase
     public string? Other1 { get; set; }
     public string? Other2 { get; set; }
 
-    public override XElement ToXElement(string name = nameof(SalesOrderLine)) => new XElement(name)
+    public override XElement ToXElement(string name = nameof(SalesOrderLine))
+    {
+        return new XElement(nameof(SalesOrderLineAdd))
         .AddElement(ItemRef)
         .AddElement(Desc)
         .AddElement(Quantity)
@@ -39,4 +41,5 @@ public class SalesOrderLineAdd : SalesOrderLineAddBase
         .AddElement(Other1)
         .AddElement(Other2)
         .AddElement(DataExt);
+    }
 }

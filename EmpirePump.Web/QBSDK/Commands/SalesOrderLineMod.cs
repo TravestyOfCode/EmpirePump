@@ -22,7 +22,9 @@ public class SalesOrderLineMod : SalesOrderLineModBase
     public string? Other1 { get; set; }
     public string? Other2 { get; set; }
 
-    public override XElement ToXElement(string name = nameof(SalesOrderLine)) => new XElement(name)
+    public override XElement ToXElement(string name = nameof(SalesOrderLineMod))
+    {
+        return new XElement(nameof(SalesOrderLineMod))
         .AddElement(TxnLineID)
         .AddElement(ItemRef)
         .AddElement(Desc)
@@ -43,6 +45,7 @@ public class SalesOrderLineMod : SalesOrderLineModBase
         .AddElement(IsManuallyClosed)
         .AddElement(Other1)
         .AddElement(Other2);
+    }
 }
 
 internal static class SalesOrderLineModExtensions

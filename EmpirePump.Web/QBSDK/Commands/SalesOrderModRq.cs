@@ -64,7 +64,7 @@ public class SalesOrderModRq : IQBXElement
 
     public float? ExchangeRate { get; set; }
 
-    public List<SalesOrderLineModBase>? SalesOrderLineMods { get; set; }
+    public List<SalesOrderLineModBase>? SalesOrderLines { get; set; }
 
     public SalesOrder? Ret { get; set; }
 
@@ -73,7 +73,7 @@ public class SalesOrderModRq : IQBXElement
         // TODO: Add CA/UK and check for context support.
         context ??= new QBContext();
 
-        var mod = new XElement("SalesOrdeMod")
+        var mod = new XElement("SalesOrderMod")
         .AddElement(TxnID)
         .AddElement(EditSequence)
         .AddElement(CustomerRef)
@@ -99,7 +99,7 @@ public class SalesOrderModRq : IQBXElement
         .AddElement(CustomerSalesTaxCodeRef)
         .AddElement(Other)
         .AddElement(ExchangeRate)
-        .AddElement(SalesOrderLineMods);
+        .AddElement(SalesOrderLines);
 
         return new XElement(nameof(SalesOrderModRq), mod);
     }

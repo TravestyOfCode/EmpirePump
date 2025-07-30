@@ -164,3 +164,39 @@ public class SalesOrderModRq : IQBXElement
         }
     }
 }
+
+public static class SalesOrderModRqExtensions
+{
+    public static SalesOrderModRq ToModRq(this SalesOrder so)
+    {
+        return new SalesOrderModRq()
+        {
+            TxnID = so.TxnID,
+            EditSequence = so.EditSequence,
+            CustomerRef = so.Customer,
+            ClassRef = so.Class,
+            TemplateRef = so.Template,
+            TxnDate = so.TxnDate,
+            RefNumber = so.RefNumber,
+            BillAddress = so.BillAddress,
+            ShipAddress = so.ShipAddress,
+            PONumber = so.PONumber,
+            TermsRef = so.Terms,
+            DueDate = so.DueDate,
+            SalesRepRef = so.SalesRep,
+            FOB = so.FOB,
+            ShipDate = so.ShipDate,
+            ShipMethodRef = so.ShipMethod,
+            ItemSalesTaxRef = so.ItemSalesTax,
+            IsManuallyClosed = so.IsManuallyClosed,
+            Memo = so.Memo,
+            CustomerMsgRef = so.CustomerMsg,
+            IsToBePrinted = so.IsToBePrinted,
+            IsToBeEmailed = so.IsToBeEmailed,
+            CustomerSalesTaxCodeRef = so.CustomerSalesTaxCode,
+            Other = so.Other,
+            ExchangeRate = so.ExchangeRate,
+            SalesOrderLines = so.SalesOrderLines.ToModRq()
+        };
+    }
+}

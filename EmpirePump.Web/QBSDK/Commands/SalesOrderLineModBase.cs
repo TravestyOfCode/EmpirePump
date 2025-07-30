@@ -26,4 +26,20 @@ internal static class SalesOrderLineModBaseExtensions
         }
         return element;
     }
+
+    public static SalesOrderLineModBase ToModRq(this SalesOrderLineBase line)
+    {
+        return line switch
+        {
+            SalesOrderLine sol => sol.ToModRq(),
+            SalesOrderLineGroup solg => solg.ToModRq(),
+            _ => throw new InvalidOperationException("Unknown SalesOrderLine type.")
+        };
+    }
+
+
+    public static List<SalesOrderLineModBase>? ToModRq(this List<SalesOrderLineBase>? lines)
+    {
+        return lines?.Select(l => l.ToModRq()).ToList();
+    }
 }

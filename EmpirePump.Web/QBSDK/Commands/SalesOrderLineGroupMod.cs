@@ -18,3 +18,18 @@ public class SalesOrderLineGroupMod : SalesOrderLineModBase
         .AddElement(SalesOrderLineMod);
     }
 }
+
+internal static class SalesOrderLineGroupModExtensions
+{
+    public static SalesOrderLineGroupMod ToModRq(this SalesOrderLineGroup line)
+    {
+        return new SalesOrderLineGroupMod()
+        {
+            TxnLineID = line.TxnLineID,
+            ItemGroupRef = line.Item,
+            Quantity = line.Quantity,
+            OverrideUOMSetRef = line.OverrideUOMSet,
+            SalesOrderLineMod = line.SalesOrderLines.ToModRq()
+        };
+    }
+}

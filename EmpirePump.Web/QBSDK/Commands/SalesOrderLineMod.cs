@@ -61,4 +61,34 @@ internal static class SalesOrderLineModExtensions
         }
         return element;
     }
+
+    public static SalesOrderLineMod ToModRq(this SalesOrderLine line)
+    {
+        return new SalesOrderLineMod()
+        {
+            TxnLineID = line.TxnLineID,
+            ItemRef = line.Item,
+            Desc = line.Desc,
+            Quantity = line.Quantity,
+            UnitOfMeasure = line.UnitOfMeasure,
+            OverrideUOMSetRef = line.OverrideUOMSet,
+            Rate = line.Rate,
+            RatePercent = line.RatePercent,
+            ClassRef = line.Class,
+            Amount = line.Amount,
+            InventorySiteLocationRef = line.InventorySiteLocation,
+            InventorySiteRef = line.InventorySite,
+            SerialNumber = line.SerialNumber,
+            LotNumber = line.LotNumber,
+            SalesTaxCodeRef = line.SalesTaxCode,
+            IsManuallyClosed = line.IsManuallyClosed,
+            Other1 = line.Other1,
+            Other2 = line.Other2
+        };
+    }
+
+    public static List<SalesOrderLineMod>? ToModRq(this List<SalesOrderLine>? lines)
+    {
+        return lines?.Select(l => l.ToModRq()).ToList();
+    }
 }

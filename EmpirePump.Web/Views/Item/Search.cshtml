@@ -1,0 +1,43 @@
+﻿@using EmpirePump.Web.QBSDK
+@model ItemQueryRq
+
+@if (Model.StatusCode != 0)
+{
+    <div class="text-danger">@Model.StatusMessage</div>
+}
+else
+{
+    <form method="post">
+        <div class="row">
+            <div class="col-auto float-end">
+                <button type="button" class="btn btn-outline-primary" hx-post="/item/print" hx-target="#status">Print</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-2">Qty</div>
+            <div class="col-3">Name</div>
+            <div class="col-6">Desc</div>
+        </div>
+
+        @for (int index = 0; index < Model.RetList!.Count; index++)
+        {
+            var item = Model.RetList[index];
+            <div class="row">
+                <div class="col-1">
+                    <input class="form-check" type="checkbox" name="item[@index].IsToBePrinted" checked />
+                </div>
+                <div class="col-2">
+                    <input class="form-control" type="number" min="1" max="99" name="item[@index].Quantity" value="@item.QuantityOnHand" />
+                </div>
+                <div class="col-3">
+                    <input class="form-control" type="text" name="item[@index].Name" value="@item.Name" />
+                </div>
+                <div class="col-6">
+                    <textarea class="form-control" rows="2" name="item[@index].Description">@item.FullName</textarea>
+                </div>
+            </div>
+        }
+    </form>
+}

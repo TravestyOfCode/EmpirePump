@@ -5,7 +5,7 @@ namespace EmpirePump.Web.QBSDK;
 [XmlRoot("ItemOtherChargeRet")]
 public class OtherCharge : Item
 {
-    public string? FullName { get; set; }
+    //public string? FullName { get; set; }
     public string? BarCodeValue { get; set; }
     public bool? IsActive { get; set; }
     [XmlElement("ClassRef")]

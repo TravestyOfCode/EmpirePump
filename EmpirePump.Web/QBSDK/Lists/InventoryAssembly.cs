@@ -5,7 +5,7 @@ namespace EmpirePump.Web.QBSDK;
 [XmlRoot("ItemInventoryAssemblyRet")]
 public class InventoryAssembly : Item
 {
-    public string? FullName { get; set; }
+    //public string? FullName { get; set; }
     public string? BarCodeValue { get; set; }
     public bool? IsActive { get; set; }
     [XmlElement("ClassRef")]
@@ -32,7 +32,7 @@ public class InventoryAssembly : Item
     public ListRef? AssetAccount { get; set; }
     public decimal? BuildPoint { get; set; }
     public decimal? Max { get; set; }
-    public decimal? QuantityOnHand { get; set; }
+    //public decimal? QuantityOnHand { get; set; }
     public decimal? AverageCost { get; set; }
     public decimal? QuantityOnOrder { get; set; }
     public decimal? QuantityOnSalesOrder { get; set; }

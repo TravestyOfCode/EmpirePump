@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Items";
+}
+
+<div class="row">
+    <div class="col-2 mx-2">
+        <form method="post">
+            <div class="row mb-2">
+                <input class="form-control" type="text" placeholder="Search..." name="name" autofocus/>
+            </div>
+            <div class="row mb-2">
+                <select class="form-select" name="matchcriterion">
+                    <option value="Contains" selected>Contains</option>
+                    <option value="StartsWith">Starts With</option>
+                    <option value="EndsWith">Ends With</option>
+                </select>
+            </div>
+            <div class="row mb-2">
+                <select class="form-select" name="itemtype">
+                    <option value="" selected>All Item Types</option>
+                    <option value="Inventory">Inventory</option>
+                    <option value="NonInventory">NonInventory</option>
+                    <option value="Service">Service</option>
+                </select>
+            </div>
+            <div class="row mb-2 float-end">
+                <div class="col-auto">
+                <button class="btn btn-outline-primary" type="button" hx-post="/item/search" hx-target="#main-content">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-9" id="main-content">
+
+    </div>
+</div>

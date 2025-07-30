@@ -5,7 +5,7 @@ namespace EmpirePump.Web.QBSDK;
 [XmlRoot("ItemDiscountRet")]
 public class Discount : Item
 {
-    public string? FullName { get; set; }
+    //public string? FullName { get; set; }
     public string? BarCodeValue { get; set; }
     public bool? IsActive { get; set; }
     [XmlElement("ClassRef")]

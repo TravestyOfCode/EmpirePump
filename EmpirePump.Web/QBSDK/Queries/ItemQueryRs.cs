@@ -68,7 +68,9 @@ public class ItemQueryRq : IQBXElement
 
     public string? OwnerID { get; set; }
 
-    public List<Item>? RetList { get; private set; }
+    public ItemType? ItemType { get; set; }
+
+    public List<Item>? RetList { get; internal set; }
 
 
     /// <summary>
@@ -131,12 +133,14 @@ public class ItemQueryRq : IQBXElement
                 {
                     DeserializeRetList(rs);
                 }
+                return;
             }
             statusCode = result?.StatusCode ?? statusCode;
             statusMessage = result?.StatusMessage ?? statusMessage;
         }
         catch (Exception ex)
         {
+            statusCode = -1;
             statusMessage = ex.Message;
         }
     }
@@ -147,11 +151,22 @@ public class ItemQueryRq : IQBXElement
     /// <param name="itemQueryRs">The query response to parse.</param>
     private void DeserializeRetList(XElement itemQueryRs)
     {
-        RetList = [];
-        var ser = new XmlSerializer(typeof(Item));
-        foreach (var itemRet in itemQueryRs.Elements())
+        var ser = new XmlSerializer(typeof(ItemList));
+        if (ItemType != null)
         {
-            RetList.TryAdd((Item?)ser.Deserialize(itemRet.CreateReader()));
+            string name = $"Item{ItemType}Ret";
+            foreach (var item in itemQueryRs.Elements().Reverse())
+            {
+                if (!item.Name.LocalName.Equals(name))
+                {
+                    item.Remove();
+                }
+            }
+        }
+        var list = (ItemList?)ser.Deserialize(itemQueryRs.CreateReader());
+        if (list != null)
+        {
+            RetList = list.RetList;
         }
     }
 }

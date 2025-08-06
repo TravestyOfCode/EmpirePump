@@ -1,0 +1,37 @@
+﻿@using EmpirePump.Web.Models.Reconcile
+@model IndexViewModel
+
+@{
+    ViewData["Title"] = "Reconcile";
+}
+
+<div class="row">
+    <div class="col-2" id="sidebar">
+        <form method="post" enctype="multipart/form-data">
+            <div class="row">
+                <label class="form-label" for="AccountListID">Account</label>
+                <select class="form-select" name="AccountListID" asp-items="@Model.AccountList"></select>
+            </div>
+
+            <div class="row">
+                <label class="form-label" for="StatementFile">Statement File</label>
+                <input class="form-control" type="file" accept=".csv" asp-for="StatementFile" />
+            </div>
+
+            <div class="row">
+                <label class="form-label" for="EndDate">Statement Ending Date</label>
+                <input class="form-control" type="date" asp-for="EndDate" />
+            </div>
+
+            <div class="row justify-content-end">
+                <div class="col-auto">
+                    <button class="btn btn-outline-primary" type="button"
+                            hx-post="reconcile/start" hx-target="#reconcile-main" hx-target-error="#reconcile-main">Start</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-10" id="reconcile-main">
+    </div>
+</div>

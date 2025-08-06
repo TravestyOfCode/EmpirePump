@@ -33,7 +33,7 @@ public class Account
     public List<DataExt>? DataExts { get; set; }
 }
 
-[XmlRoot("AccountRet")]
+[XmlRoot("AccountQueryRs")]
 public class AccountList
 {
     [XmlElement("AccountRet")]

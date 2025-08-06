@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EmpirePump.Web.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body hx-ext="response-targets">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -43,6 +43,7 @@
         </div>
     </footer>
     <script src="~/lib/htmx.org/dist/htmx.min.js"></script>
+    <script src="~/lib/htmx.org/dist/ext/response-targets.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)

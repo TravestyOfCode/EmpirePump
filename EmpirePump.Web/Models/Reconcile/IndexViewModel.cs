@@ -9,7 +9,7 @@ public class IndexViewModel
 
     public string? SelectedAccountListID { get; set; }
 
-    public IFormFile? StatementFile { get; set; }
+    public required IFormFile StatementFile { get; set; }
 
     public DateOnly? EndDate { get; set; }
 

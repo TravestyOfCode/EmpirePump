@@ -194,4 +194,11 @@ public class TransactionQueryRq : IQBXElement
             RetList = list.RetList;
         }
     }
+
+    // Static Query Functions
+    public static TransactionQueryRq GetByAccountIDAndDateRange(string accountID, DateOnly fromDate, DateOnly toDate) => new()
+    {
+        TransactionAccountFilter = new() { ListID = [accountID] },
+        TransactionDateRangeFilter = new() { From = fromDate, To = toDate }
+    };
 }

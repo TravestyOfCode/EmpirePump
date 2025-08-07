@@ -2,7 +2,7 @@
 
 namespace EmpirePump.Web.QBSDK;
 
-public class ListTreeFilter
+public class ListTreeFilter : IToXElement
 {
     public List<string>? ListID { get; set; }
     public List<string>? FullName { get; set; }

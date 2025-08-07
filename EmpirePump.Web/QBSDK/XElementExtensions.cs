@@ -121,6 +121,24 @@ internal static class XElementExtensions
         return element;
     }
 
+    public static XElement AddElement(this XElement element, IToXElement? value, [CallerArgumentExpression(nameof(value))] string name = "")
+    {
+        if (value != null)
+        {
+            element.Add(value.ToXElement(name));
+        }
+        return element;
+    }
+
+    public static XElement AddElement(this XElement element, List<IToXElement>? values, [CallerArgumentExpression(nameof(values))] string name = "")
+    {
+        if (values != null)
+        {
+            element.Add(values.Select(v => v.ToXElement(name)));
+        }
+        return element;
+    }
+
     // CONDITIONAL ADD ELEMENT FUNCTIONS 
     public static XElement AddElementIf(this XElement element, bool isSupported, string? value, [CallerArgumentExpression(nameof(value))] string name = "")
     {
@@ -145,6 +163,24 @@ internal static class XElementExtensions
         if (value != null && isSupported)
         {
             element.Add(new XElement(name, value.Value ? "true" : "false"));
+        }
+        return element;
+    }
+
+    public static XElement AddElementIf(this XElement element, bool isSupported, IToXElement? value, [CallerArgumentExpression(nameof(value))] string name = "")
+    {
+        if (value != null && isSupported)
+        {
+            element.Add(value.ToXElement(name));
+        }
+        return element;
+    }
+
+    public static XElement AddElementIf(this XElement element, bool isSupported, List<IToXElement>? values, [CallerArgumentExpression(nameof(values))] string name = "")
+    {
+        if (values != null && isSupported)
+        {
+            element.Add(values.Select(v => v.ToXElement(name)));
         }
         return element;
     }

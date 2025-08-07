@@ -6,5 +6,5 @@ public class StartReconcileModel
 {
     public required string AccountListID { get; set; }
     public required IFormFile StatementFile { get; set; }
-    public DateOnly? EndDate { get; set; }
+    public required DateOnly EndDate { get; set; }
 }

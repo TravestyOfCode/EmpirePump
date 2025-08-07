@@ -32,6 +32,15 @@ public class ReconcileController : Controller
     [HttpPost]
     public IActionResult Start(StartReconcileModel startRec)
     {
-        return StatusCode(500, "<div class=\"text-danger\">Action has not yet been implemented.</div>");
+        // Parse the StatementFile into BankTransaction
+        //var bankTxns = new StatementCSVParser().ParseCSV(startRec.StatementFile);
+
+        // Get uncleared transactions for the account from QB
+
+        // For each of the BankTransactions, try to find a match to a QB transaction
+        // Return a list of BankTransactions that match QB transactions,
+        // as well as the bank and qb transactions that are not matched
+
+        return StatusCode(500, "<div class=\"text-danger\">Not implemented yet</div>");
     }
 }

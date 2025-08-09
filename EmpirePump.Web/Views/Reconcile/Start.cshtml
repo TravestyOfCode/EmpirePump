@@ -1,0 +1,42 @@
+﻿@using EmpirePump.Web.Models.Reconcile
+@model MatchedTransactionModel
+
+<div class="row">
+    <div class="col-6" id="matched-bank-txns-header">
+        <div class="row">
+            <div class="col-1">Date</div>
+            <div class="col-3">Desc</div>
+            <div class="col-2">Amount</div>
+        </div>
+    </div>
+    <div class="col-6" id="matched-qb-txns-header">
+        <div class="row">
+            <div class="col-1">Date</div>
+            <div class="col-3">Desc</div>
+            <div class="col-2">Amount</div>
+        </div>
+    </div>
+</div>
+
+@foreach (var txn in Model.BankTransactions.Where(b => b.MatchedTxnID != null))
+{
+    var qbTxn = Model.QBTransactions.Where(q => q.MatchedTxnID == txn.TxnID).SingleOrDefault();
+
+    <div class="row">
+        <div class="col-6" id="matched-bank-txns">
+            <div class="row bg-success">
+                <div class="col-1">@txn.TxnDate</div>
+                <div class="col-3">@txn.Description</div>
+                <div class="col-2">@txn.Amount</div>
+            </div>
+        </div>
+
+        <div class="col-6" id="matched-qb-txns">
+            <div class="row bg-success">
+                <div class="col-1">@qbTxn?.TxnDate</div>
+                <div class="col-3">@qbTxn?.Description</div>
+                <div class="col-2">@qbTxn?.Amount</div>
+            </div>
+        </div>
+    </div>
+}

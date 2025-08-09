@@ -39,7 +39,7 @@ public class StatementCSVParser
     // Which column is the check number column. Non-zero based
     public int? CheckNumberColumn { get; set; } = 8;
 
-    public List<BankTransaction> ParseCSV(IFormFile statementFile)
+    public List<Transaction> ParseCSV(IFormFile statementFile)
     {
         // This is used to determine which row we are on so we can determine if
         // we need to use skip records to get to the header.
@@ -55,13 +55,15 @@ public class StatementCSVParser
 
         using var reader = new StreamReader(statementFile.OpenReadStream());
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-        var records = new List<BankTransaction>();
+        var records = new List<Transaction>();
+        var txnID = 0;
         csv.Read(); // Should skip to our header if we have one.
         csv.ReadHeader(); // Should do nothing if we don't have a header.
         while (csv.Read())
         {
-            var record = new BankTransaction()
+            var record = new Transaction()
             {
+                TxnID = (++txnID).ToString(),
                 TxnDate = csv.GetField<DateOnly>(TxnDateColumn - 1),
                 Description = csv.GetField(DescColumn - 1),
                 DebitAmount = DebitColumn.HasValue ? csv.GetField<decimal>(DebitColumn.Value - 1) : null,

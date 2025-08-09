@@ -1,11 +1,16 @@
 ﻿namespace EmpirePump.Web.Models.Reconcile;
 
-public class BankTransaction
+public class Transaction
 {
-    // Identifies which QB transaction this bank transaction is matched to.
-    public string? QBTxnID { get; set; }
+    private static readonly object lockObject = new object();
 
-    // The transaction date. Matched QB Txn should be within a tollerance of this date.
+    // Identifies which transaction this transaction is matched to.
+    public string? MatchedTxnID { get; set; }
+
+    // The unique identitifer for this transaction
+    public string? TxnID { get; set; }
+
+    // The transaction date. Matched Txn should be within a tollerance of this date.
     public DateOnly TxnDate { get; set; }
 
     // The bank's description. Can be used to create matching rules to ensure
@@ -36,15 +41,18 @@ public class BankTransaction
         }
         set
         {
-            if (value >= 0)
+            lock (lockObject)
             {
-                CreditAmount = value;
-                DebitAmount = null;
-            }
-            else
-            {
-                DebitAmount = value * -1;
-                CreditAmount = null;
+                if (value >= 0)
+                {
+                    CreditAmount = value;
+                    DebitAmount = null;
+                }
+                else
+                {
+                    DebitAmount = value * -1;
+                    CreditAmount = null;
+                }
             }
         }
     }

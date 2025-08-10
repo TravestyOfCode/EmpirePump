@@ -43,4 +43,10 @@ public abstract class QBRequest : IQBXElement
     /// <param name="context">The QBContext used to exclude unsupported elements</param>
     /// <returns></returns>
     public abstract XElement ToXElement(QBContext? context);
+
+    /// <summary>
+    /// Parses the response to copy over the status information, and any response objects.
+    /// </summary>
+    /// <param name="response"></param>
+    internal abstract void ParseResponse(QBResponse? response);
 }

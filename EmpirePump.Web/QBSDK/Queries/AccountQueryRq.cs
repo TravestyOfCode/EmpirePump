@@ -60,5 +60,22 @@ public class AccountQueryRq : ListQueryRq
             .AddElement(OwnerID);
     }
 
+    /// <summary>
+    /// Parses the response for status information and response objects.
+    /// </summary>
+    /// <param name="response">The QBResponse to parse.</param>    
+    internal override void ParseResponse(QBResponse? response)
+    {
+        var accountRs = response as AccountQueryRs;
+
+        statusCode = accountRs?.StatusCode;
+        statusSeverity = accountRs?.StatusSeverity;
+        statusMessage = accountRs?.StatusMessage;
+        retCount = accountRs?.ReturnedCount;
+        Results = accountRs?.Accounts;
+    }
+
     public static AccountQueryRq GetReconcilableAccounts() => new() { AccountType = [QBSDK.AccountType.Bank, QBSDK.AccountType.CreditCard] };
+
+
 }

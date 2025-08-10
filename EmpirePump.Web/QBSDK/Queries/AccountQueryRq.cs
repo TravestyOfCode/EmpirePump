@@ -58,4 +58,6 @@ public class AccountQueryRq : ListQueryRq
             .AddElement(IncludeRetElement)
             .AddElement(OwnerID);
     }
+
+    public static AccountQueryRq GetReconcilableAccounts() => new() { AccountType = [QBSDK.AccountType.Bank, QBSDK.AccountType.CreditCard] };
 }

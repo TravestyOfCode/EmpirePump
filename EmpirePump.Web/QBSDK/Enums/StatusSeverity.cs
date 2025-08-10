@@ -2,5 +2,5 @@
 
 public enum StatusSeverity
 {
-    INFO, WARNING, ERROR
+    Info, Warning, Error
 }

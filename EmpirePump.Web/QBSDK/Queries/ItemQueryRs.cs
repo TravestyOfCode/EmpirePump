@@ -107,7 +107,7 @@ public class ItemQueryRq : IQBXElement
     {
         // Set our default state to be an error.
         statusCode = -1;
-        statusSeverity = QBSDK.StatusSeverity.ERROR;
+        statusSeverity = QBSDK.StatusSeverity.Error;
         statusMessage = "Unknown error when processing the ItemQueryRq.";
 
         try

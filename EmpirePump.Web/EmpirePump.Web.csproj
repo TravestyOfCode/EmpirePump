@@ -37,9 +37,5 @@
 		<Using Include="EmpirePump.Web.Services.Results" />
 		<Using Include="Microsoft.Extensions.Logging" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="QBSDK\Responses\" />
-	</ItemGroup>
 	
 </Project>

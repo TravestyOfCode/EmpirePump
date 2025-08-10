@@ -47,7 +47,7 @@ public abstract class ListQueryRq : QBRequest
     /// enabled for use by QuickBooks. By default will return only active
     /// objects if null or empty.
     /// </summary>
-    public List<ActiveStatus>? ActiveStatus { get; set; }
+    public ActiveStatus? ActiveStatus { get; set; }
 
     /// <summary>
     /// Selects objects modified on or after this date. The value must be 

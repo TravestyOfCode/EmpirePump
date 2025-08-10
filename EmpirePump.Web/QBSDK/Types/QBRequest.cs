@@ -8,6 +8,7 @@ public abstract class QBRequest : IQBXElement
     // A unique number assigned to requests when processing so we can match up
     // the correct response.
     internal int requestID;
+    public int RequestID => requestID;
 
     protected int? statusCode;
     /// <summary>

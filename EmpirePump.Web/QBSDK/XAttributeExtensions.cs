@@ -14,6 +14,13 @@ internal static class XAttributeExtensions
         return element;
     }
 
+    public static XElement AddAttribute(this XElement element, int value, [CallerArgumentExpression(nameof(value))] string name = "")
+    {
+        element.Add(new XAttribute(name, value));
+
+        return element;
+    }
+
     public static XElement AddAttribute(this XElement element, bool? value, [CallerArgumentExpression(nameof(value))] string name = "")
     {
         if (value != null)

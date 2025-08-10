@@ -44,6 +44,7 @@ public class AccountQueryRq : ListQueryRq
         context ??= new QBContext();
 
         return new XElement(nameof(AccountQueryRq))
+            .AddAttribute(requestID)
             .AddAttributeIf(context.Supports(QBEdition.Any, 4, 0), metaData)
             .AddElement(ListID)
             .AddElement(FullName)

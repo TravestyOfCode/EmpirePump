@@ -11,10 +11,10 @@ public class QBXMLRequestList
     [XmlElement("CustomerQueryRs", typeof(CustomerQueryRq))]
     public List<QBRequest> Requests { get; set; } = [];
 
-    public IEnumerable<XElement> ToXElement(QBContext? context)
+    public List<XElement> ToXElement(QBContext? context)
     {
         context ??= new QBContext();
 
-        return Requests?.Select(r => r.ToXElement(context)) ?? [];
+        return Requests?.Select(r => r.ToXElement(context)).ToList() ?? [];
     }
 }

@@ -22,6 +22,7 @@ public class QBXML
 
     public override string ToString()
     {
-        return $"<?xml version=\"1.0\" encoding=\"utf-16\" ?><?qbxml version=\"{context.MajorVersion}.{context.MinorVersion}\" ?><QBXML><QBXMLMsgsRq onError=\"{OnError}\">{QBXMLMsgs?.ToXElement(context)}</QBXMLMsgsRq></QBXML>";
+        var rq = string.Concat(QBXMLMsgs.ToXElement(context).Select(e => e.ToString()));
+        return $"<?xml version=\"1.0\" encoding=\"utf-8\" ?><?qbxml version=\"{context.MajorVersion}.{context.MinorVersion}\" ?><QBXML><QBXMLMsgsRq onError=\"{OnError}\">{rq}</QBXMLMsgsRq></QBXML>";
     }
 }

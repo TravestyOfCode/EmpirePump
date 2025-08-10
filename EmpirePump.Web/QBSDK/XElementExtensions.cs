@@ -102,6 +102,15 @@ internal static class XElementExtensions
         return element;
     }
 
+    public static XElement AddElement<T>(this XElement element, List<T>? values, [CallerArgumentExpression(nameof(values))] string name = "") where T : struct, Enum
+    {
+        if (values != null)
+        {
+            element.Add(values.Select(v => new XElement(name, v.ToString())));
+        }
+        return element;
+    }
+
     public static XElement AddElement(this XElement element, XElement? value, [CallerArgumentExpression(nameof(value))] string name = "")
     {
         if (value != null)

@@ -68,6 +68,15 @@ internal static class XElementExtensions
         return element;
     }
 
+    public static XElement AddElement(this XElement element, IToXElement? value, [CallerArgumentExpression(nameof(value))] string name = "")
+    {
+        if (value != null)
+        {
+            element.Add(value.ToXElement(name));
+        }
+        return element;
+    }
+
     public static XElement AddElement<T>(this XElement element, T? value, [CallerArgumentExpression(nameof(value))] string name = "") where T : struct, Enum
     {
         if (value != null)
@@ -98,6 +107,15 @@ internal static class XElementExtensions
         if (value != null)
         {
             element.Add(value.Select(v => new XElement(name, v)).ToList());
+        }
+        return element;
+    }
+
+    public static XElement AddElement(this XElement element, List<IToXElement>? value, [CallerArgumentExpression(nameof(value))] string name = "")
+    {
+        if (value != null)
+        {
+            element.Add(value.Select(v => v.ToXElement(name)));
         }
         return element;
     }

@@ -16,7 +16,9 @@ public class QBXML
     /// A list of all the requests to send to QuickBooks.
     /// </summary>
     [XmlElement("QBXMLMsgsRs")]
-    public QBXMLRequestList? QBXMLMsgs { get; set; }
+    public QBXMLRequestList QBXMLMsgs { get; } = new QBXMLRequestList();
+
+    public void AddRequest(QBRequest request) => QBXMLMsgs.Requests.Add(request);
 
     public override string ToString()
     {

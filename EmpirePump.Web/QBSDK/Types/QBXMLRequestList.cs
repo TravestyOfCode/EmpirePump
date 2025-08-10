@@ -9,7 +9,7 @@ public class QBXMLRequestList
     [XmlElement("AccountModRs", typeof(AccountModRq))]
     [XmlElement("AccountAddRs", typeof(AccountAddRq))]
     [XmlElement("CustomerQueryRs", typeof(CustomerQueryRq))]
-    public List<QBRequest>? Requests { get; set; }
+    public List<QBRequest> Requests { get; set; } = [];
 
     public IEnumerable<XElement> ToXElement(QBContext? context)
     {

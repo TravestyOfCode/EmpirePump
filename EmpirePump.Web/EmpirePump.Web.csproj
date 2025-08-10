@@ -6,6 +6,7 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 		<UserSecretsId>aspnet-EmpirePump.Web-1c641f2e-3e4a-4c53-acdd-24e509823e9e</UserSecretsId>
 		<Platforms>x64</Platforms>
+		<NoWarn>IDE0130</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
